@@ -48,6 +48,8 @@ class TestCase(TagPlaylistTestCase):
         tag_winter.criteria_playlist.save(update_fields=[ModelFields.UPDATED_ON])
 
         tag_spring = self.model_fixture_factory.create_tag(name="Spring", parent=tag_fiesta)
+        tag_spring.criteria_playlist.updated_on = now
+        tag_spring.criteria_playlist.save(update_fields=[ModelFields.UPDATED_ON])
 
         # Create unrelated tag
         beach_tag = self.model_fixture_factory.create_tag(name="Beach", updated_on=now)

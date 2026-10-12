@@ -17,7 +17,10 @@ class CriteriaPlaylistFilterSet(PrivateUniqueResourceFilterSet):
         field_name_public=Fields.NAME_PUBLIC,
         lookup_expr="icontains",
     )
-    parent = ForeignKeyFilter()
+    parent = ForeignKeyFilter(
+        field_name=f"{ModelFields.CRITERIA}__{ModelFields.PARENT}__criteria_playlist",
+        field_name_public=Fields.PARENT,
+    )
     tree_name = ChoiceFilter(choices=CriteriaTreeName.choices, method="filter_tree_name")
 
     class Meta:

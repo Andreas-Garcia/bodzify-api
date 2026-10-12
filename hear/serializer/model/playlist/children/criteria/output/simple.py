@@ -29,11 +29,15 @@ class CriteriaPlaylistSimpleSerializer(EagerLoadingMixin, serializers.ModelSeria
 
     @classmethod
     def setup_queryset(cls, queryset, prefix=""):  # noqa: ARG003 - annotations only apply to the top-level queryset
-        queryset = queryset.select_related(Fields.CRITERIA, Fields.PARENT, Fields.ROOT).annotate(
-            **{UPLOADED_TRACKS_COUNT_ANNOTATED: uploaded_tracks_count_annotation(archived=False)}
-        )
+        queryset = queryset.select_related(
+            Fields.CRITERIA,
+            f"{Fields.CRITERIA}__{Fields.PARENT}__criteria_playlist",
+            f"{Fields.CRITERIA}__{Fields.ROOT}__criteria_playlist",
+        ).annotate(**{UPLOADED_TRACKS_COUNT_ANNOTATED: uploaded_tracks_count_annotation(archived=False)})
         for nested in (Fields.PARENT, Fields.ROOT):
-            queryset = CriteriaPlaylistMinimumSerializer.setup_queryset(queryset, prefix=f"{nested}__")
+            queryset = CriteriaPlaylistMinimumSerializer.setup_queryset(
+                queryset, prefix=f"{Fields.CRITERIA}__{nested}__criteria_playlist__"
+            )
         return CriteriaSimpleSerializer.setup_queryset(queryset, prefix=f"{Fields.CRITERIA}__")
 
     def to_representation(self, instance):

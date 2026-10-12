@@ -55,6 +55,7 @@ All contributors (including maintainers) should update `CHANGELOG.md` when creat
   - Includes regression tests to prevent future occurrences
   - Improved error messages for better user feedback
 - **Spotify library sync**: Fixed Spotify library sync
+- **Genre tree**: Genre playlists' parent and root are now derived from their genre instead of stored, so a genre moved by a tree import no longer shows under its old parent (genre-kit 0.42.0; migration `0030` drops `criteriaplaylist.parent`/`root`). `TRACK_TITLE_LEN_MAX` raised to 2048 as genre-kit 0.39 requires
 
 ### CI
 

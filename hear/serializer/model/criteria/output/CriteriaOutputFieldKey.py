@@ -22,3 +22,4 @@ class CriteriaOutputFieldKey(StrEnum):
     TREE_NAME = "tree_name"
     PRIMARY_PARENTS = "primary_parents"
     SECONDARY_PARENTS = "secondary_parents"
+    WIKIDATA_ID = "wikidata_id"

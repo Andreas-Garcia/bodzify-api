@@ -39,6 +39,18 @@ class TestCase(GenreTestCase):
         hardcore_playlist = CriteriaPlaylist.objects.get(user=self.test_user1, criteria=hardcore_genre)
         assert punk_playlist.root == hardcore_playlist
 
+    def test_genre_moved_without_save_hooks_then_playlist_tree_follows(self):
+        genre_rock = self.model_fixture_factory.create_genre(name="Rock")
+        genre_punk = self.model_fixture_factory.create_genre(name="Punk", parent=genre_rock)
+        hardcore_genre = self.model_fixture_factory.create_genre(name="Hardcore")
+
+        self.model_class.objects.filter(pk=genre_punk.pk).update(parent=hardcore_genre, root=hardcore_genre)
+
+        punk_playlist = CriteriaPlaylist.objects.get(user=self.test_user1, criteria=genre_punk)
+        hardcore_playlist = CriteriaPlaylist.objects.get(user=self.test_user1, criteria=hardcore_genre)
+        assert punk_playlist.parent == hardcore_playlist
+        assert punk_playlist.root == hardcore_playlist
+
     def test_new_parent_then_update_new_parent_playlist(self):
         genre_punk = self.model_fixture_factory.create_genre(name="Punk")
         track = self.model_fixture_factory.create_uploaded_track_with_file(
