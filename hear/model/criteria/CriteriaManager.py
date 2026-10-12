@@ -2,8 +2,6 @@ from typing import TYPE_CHECKING, Any, TypeVar
 
 from the_music_tree_genre_kit.criteria.AbstractCriteriaManager import AbstractCriteriaManager
 
-from .Fields import Fields
-
 if TYPE_CHECKING:
     from hear.model.uploaded_track.UploadedTrack import UploadedTrack
 
@@ -29,21 +27,6 @@ class CriteriaManager(AbstractCriteriaManager[T]):
         from hear.model.playlist.children.criteria.CriteriaPlaylist import CriteriaPlaylist
 
         CriteriaPlaylist.objects.bulk_create_for_criteria(instances)
-
-    def _on_parent_changed(
-        self, instance: T, *, old_parent: Criteria | None, old_root: Criteria, root_changed: bool, actor: Any = None
-    ) -> None:
-        from hear.model.playlist.children.criteria.CriteriaPlaylist import CriteriaPlaylist
-
-        playlist_parent = instance.parent.criteria_playlist if instance.parent else None
-        CriteriaPlaylist.objects.update_instance(
-            instance=instance.criteria_playlist, **{Fields.PARENT: playlist_parent}
-        )
-
-        if root_changed:
-            CriteriaPlaylist.objects.update_instance_and_children_root(
-                instance=instance.criteria_playlist, root=instance.root.criteria_playlist
-            )
 
     def _on_renamed(self, instance: T, *, old_name: str, actor: Any = None) -> None:
         if instance.tracks:
