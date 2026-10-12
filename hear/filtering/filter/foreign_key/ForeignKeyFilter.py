@@ -31,7 +31,7 @@ class ForeignKeyFilter(EmptiableCharFilter):
 
         if re.match(r"{{.*}}", str(value)):
             raise AppValidationException(
-                field_name=str(self.field_name),
+                field_name=str(self.field_name_public or self.field_name),
                 message=_("%(value)s is not a valid UUID") % {"value": value},
                 field_validation_error_code=FieldValidationErrorCode.FORMAT_INVALID,
             )
@@ -41,7 +41,7 @@ class ForeignKeyFilter(EmptiableCharFilter):
                 uuid.UUID(str(value))
         except TypeError, ValueError:
             raise AppValidationException(
-                field_name=str(self.field_name),
+                field_name=str(self.field_name_public or self.field_name),
                 message=_("%(value)s is not a valid UUID") % {"value": value},
                 field_validation_error_code=FieldValidationErrorCode.FORMAT_INVALID,
             )
