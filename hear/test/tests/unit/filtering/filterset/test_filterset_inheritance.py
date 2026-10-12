@@ -2,15 +2,15 @@ from datetime import timedelta
 
 from django.utils import timezone
 from django_filters import FilterSet
+from the_music_tree_api_kit.filtering.set.private_unique_resource.Fields import Fields as PrivateUniqueResourceFields
+from the_music_tree_genre_kit.filtering.set.criteria.CriteriaFilterSet import CriteriaFilterSet
+from the_music_tree_genre_kit.filtering.set.criteria_playlist.CriteriaPlaylistFilterSet import CriteriaPlaylistFilterSet
+from the_music_tree_genre_kit.filtering.set.manual_playlist.ManualPlaylistFilterSet import ManualPlaylistFilterSet
+from the_music_tree_genre_kit.filtering.set.playlist.PlaylistFilterSet import PlaylistFilterSet
 
 from hear.filtering.set.album.AlbumFilterSet import AlbumFilterSet
 from hear.filtering.set.artist.ArtistFilterSet import ArtistFilterSet
-from hear.filtering.set.criteria.CriteriaFilterSet import CriteriaFilterSet
 from hear.filtering.set.play.PlayFilterSet import PlayFilterSet
-from hear.filtering.set.playlist.children.criteria.CriteriaPlaylistFilterSet import CriteriaPlaylistFilterSet
-from hear.filtering.set.playlist.children.manual.ManualPlaylistFilterSet import ManualPlaylistFilterSet
-from hear.filtering.set.playlist.PlaylistFilterSet import PlaylistFilterSet
-from hear.filtering.set.private_unique_resource.Fields import Fields as PrivateUniqueResourceFields
 from hear.filtering.set.uploaded_track.UploadedTrackFilterSet import UploadedTrackFilterSet
 from hear.test.utils.AppTestCase import AppTestCase
 

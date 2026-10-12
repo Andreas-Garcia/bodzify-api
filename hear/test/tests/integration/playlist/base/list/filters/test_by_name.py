@@ -1,8 +1,8 @@
 from rest_framework import status
 from the_music_tree_api_kit.exception.validation.FieldValidationErrorCode import FieldValidationErrorCode
+from the_music_tree_genre_kit.playlist.Fields import Fields as Filters
 from the_music_tree_genre_kit.playlist.Playlist import Playlist
 
-from hear.filtering.set.playlist.Fields import Fields as Filters
 from hear.model.playlist.children.criteria.CriterialessPlaylistNames import CriterialessPlaylistNames
 from hear.test.tests.integration.playlist.base.PlaylistTestCase import PlaylistTestCase
 from hear.test.utils.field.filter.char.NotNullableFreeCharFilterTestCase import NotNullableFreeCharFilterTestCase
@@ -13,12 +13,12 @@ class TestCase(PlaylistTestCase, NotNullableFreeCharFilterTestCase):
         super().setUp(methods_names_to_implement=None)
 
     def test_empty_then_400_bad_request(self) -> None:
-        response = self._get_playlists(**{Filters.NAME: ""})
+        response = self._get_playlists(**{Filters.NAME_PUBLIC: ""})
 
         assert response.status_code == status.HTTP_400_BAD_REQUEST
         assert len(self.bad_request_result_field_errors) == 1
         error = self.bad_request_result_field_errors[0]
-        assert error["field"] == Filters.NAME
+        assert error["field"] == Filters.NAME_PUBLIC
         assert error["code"] == FieldValidationErrorCode.BLANK
 
     def test_not_provided_then_results(self) -> None:
@@ -34,26 +34,26 @@ class TestCase(PlaylistTestCase, NotNullableFreeCharFilterTestCase):
         manual_playlist_name = "Teuf"
         self.model_fixture_factory.create_manual_playlist(name=manual_playlist_name)
 
-        response = self._get_playlists(**{Filters.NAME: "tEU"})
+        response = self._get_playlists(**{Filters.NAME_PUBLIC: "tEU"})
 
         assert response.status_code == status.HTTP_200_OK
         assert len(self.results) == 1
-        names_lowered = [result[Filters.NAME].lower() for result in self.results]
+        names_lowered = [result[Filters.NAME_PUBLIC].lower() for result in self.results]
         assert manual_playlist_name.lower() in names_lowered
 
     def test_genreless_special_name_then_results(self) -> None:
-        response = self._get_playlists(**{Filters.NAME: "geNr"})
+        response = self._get_playlists(**{Filters.NAME_PUBLIC: "geNr"})
 
         assert response.status_code == status.HTTP_200_OK
         assert len(self.results) == 1
-        assert self.results[0][Filters.NAME] == CriterialessPlaylistNames.GENRE
+        assert self.results[0][Filters.NAME_PUBLIC] == CriterialessPlaylistNames.GENRE
 
     def test_tagless_special_name_then_results(self) -> None:
-        response = self._get_playlists(**{Filters.NAME: "aGl"})
+        response = self._get_playlists(**{Filters.NAME_PUBLIC: "aGl"})
 
         assert response.status_code == status.HTTP_200_OK
         assert len(self.results) == 1
-        assert self.results[0][Filters.NAME] == CriterialessPlaylistNames.TAG
+        assert self.results[0][Filters.NAME_PUBLIC] == CriterialessPlaylistNames.TAG
 
     def test_value_in_simple_criteria_and_special_names_then_results(self) -> None:
         manual_playlist_name = "lEsson"
@@ -61,11 +61,11 @@ class TestCase(PlaylistTestCase, NotNullableFreeCharFilterTestCase):
         criteria_name = "leSsa"
         self.model_fixture_factory.create_genre(name=criteria_name)
 
-        response = self._get_playlists(**{Filters.NAME: "Less"})
+        response = self._get_playlists(**{Filters.NAME_PUBLIC: "Less"})
 
         assert response.status_code == status.HTTP_200_OK
         assert len(self.results) == 4
-        names_lowered = [result[Filters.NAME].lower() for result in self.results]
+        names_lowered = [result[Filters.NAME_PUBLIC].lower() for result in self.results]
         assert manual_playlist_name.lower() in names_lowered
         assert criteria_name.lower() in names_lowered
         assert CriterialessPlaylistNames.GENRE.lower() in names_lowered

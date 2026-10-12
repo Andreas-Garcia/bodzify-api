@@ -1,9 +1,10 @@
 from drf_spectacular.types import OpenApiTypes
 from drf_spectacular.utils import OpenApiParameter, extend_schema
 from the_music_tree_api_kit.view.viewset.model.AppModelViewSet import AppModelViewSet
+from the_music_tree_genre_kit.filtering.set.manual_playlist.ManualPlaylistFilterSet import ManualPlaylistFilterSet
+from the_music_tree_genre_kit.manual_playlist.Fields import Fields
 from the_music_tree_genre_kit.view.viewset.playlist.PlaylistTracksActionMixin import PlaylistTracksActionMixin
 
-from hear.filtering.set.playlist.children.manual.ManualPlaylistFilterSet import Fields, ManualPlaylistFilterSet
 from hear.model.playlist.children.manual.ManualPlaylist import ManualPlaylist
 from hear.serializer.model.playlist.children.manual.input.input import ManualPlaylistInputSerializer
 from hear.serializer.model.playlist.children.manual.input.post import ManualPlaylistPostSerializer

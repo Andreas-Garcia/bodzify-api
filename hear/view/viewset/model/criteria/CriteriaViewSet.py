@@ -2,9 +2,9 @@ from drf_spectacular.types import OpenApiTypes  # type: ignore
 from drf_spectacular.utils import OpenApiParameter, extend_schema  # type: ignore
 from rest_framework import status  # type: ignore
 from rest_framework.response import Response  # type: ignore
+from the_music_tree_genre_kit.criteria.Fields import Fields as FilterFields
 from the_music_tree_genre_kit.view.viewset.AbstractCriteriaViewSet import AbstractCriteriaViewSet
 
-from hear.filtering.set.criteria.Fields import Fields as FilterFields
 from hear.model.criteria.Criteria import Criteria
 from hear.serializer.model.criteria.input.post import CriteriaPostSerializer
 from hear.serializer.model.criteria.input.put import CriteriaPutSerializer
@@ -15,7 +15,7 @@ from hear.serializer.model.criteria.output.simple import CriteriaSimpleSerialize
 class CriteriaViewSet(AbstractCriteriaViewSet[Criteria]):
     def __init__(self, model_class: type[Criteria], **kwargs):
         # Filtersets must be imported after Django is loaded
-        from hear.filtering.set.criteria.CriteriaFilterSet import CriteriaFilterSet
+        from the_music_tree_genre_kit.filtering.set.criteria.CriteriaFilterSet import CriteriaFilterSet
 
         super().__init__(
             model_class=model_class,

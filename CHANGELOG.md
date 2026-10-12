@@ -39,6 +39,10 @@ All contributors (including maintainers) should update `CHANGELOG.md` when creat
 - **python-project-standards v5.1.0 (Copier)**: Adopted via [`.copier-answers.yml`](.copier-answers.yml); `copier update` now merges shared pre-commit/ruff baselines while keeping repo hooks. Removed **`STANDARDS_VERSION`**, `scripts/verify-standards.sh`, `scripts/check_lint_baseline.py`, `baselines/DIGESTS`, `baselines/expected-mypy.json` and the `verify-python-project-standards` hook. [`scripts/publish_github_release.py`](scripts/publish_github_release.py) now requires the version argument (it no longer falls back to `STANDARDS_VERSION`).
 - **python-project-standards v4.1.0 layout**: Vendored [**`baselines/`**](baselines/) (`ruff.toml`, **`DIGESTS`**, **`expected-mypy.json`**), thin **`[tool.ruff] extend`** in [`pyproject.toml`](pyproject.toml), [**`STANDARDS_VERSION`**](STANDARDS_VERSION) **`4.1.0`**, and [**`scripts/check_lint_baseline.py`**](scripts/check_lint_baseline.py) (with [**`verify-standards.sh`**](scripts/verify-standards.sh) invoking it). [**`pre-commit-hooks`**](.pre-commit-config.yaml) **`rev`** bumped to **`v6.0.0`**. Pre-commit still runs **inline** in [`.github/workflows/test.yml`](.github/workflows/test.yml) (no org **`reusable-pre-commit`** job).
 
+### Changed
+
+- **Filtering**: shared filters and filtersets now come from `the-music-tree-api-kit` v0.10.0 (generic char/foreign-key filters, `PrivateUniqueResourceFilterSet`) and `the-music-tree-genre-kit` v0.43.0 (criteria and playlist filtersets); `hear/filtering` keeps only album, artist, play, search, spotify and uploaded-track. Query params unchanged.
+
 ### Added
 
 - **Track API**: Added batch upload endpoint for multiple tracks

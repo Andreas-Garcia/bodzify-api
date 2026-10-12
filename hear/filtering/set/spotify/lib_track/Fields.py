@@ -1,4 +1,5 @@
-from hear.filtering.set.private_unique_resource.Fields import Fields as PrivateUniqueResourceFields
+from the_music_tree_api_kit.filtering.set.private_unique_resource.Fields import Fields as PrivateUniqueResourceFields
+
 from hear.model.spotify_resource.children.artist.Fields import Fields as ArtistFields
 from hear.model.spotify_resource.children.track.Fields import Fields as ModelFields
 

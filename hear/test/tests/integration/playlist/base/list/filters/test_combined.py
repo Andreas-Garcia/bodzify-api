@@ -2,11 +2,11 @@ from datetime import timedelta
 
 from django.utils import timezone
 from rest_framework import status
+from the_music_tree_api_kit.filtering.set.private_unique_resource.Fields import Fields as PrivateUniqueResourceFields
 from the_music_tree_genre_kit.criteria.type.CriteriaTypePks import CriteriaTypePks
+from the_music_tree_genre_kit.playlist.Fields import Fields as Filters
 from the_music_tree_genre_kit.playlist.PlaylistTypesLabel import PlaylistTypesLabel
 
-from hear.filtering.set.playlist.Fields import Fields as Filters
-from hear.filtering.set.private_unique_resource.Fields import Fields as PrivateUniqueResourceFields
 from hear.model.playlist.children.criteria.CriterialessPlaylistNames import CriterialessPlaylistNames
 from hear.model.playlist.children.criteria.tag.TagPlaylist import TagPlaylist
 from hear.serializer.model.playlist.base.output.detailed import Fields as PlaylistGetFields
@@ -15,14 +15,20 @@ from hear.test.tests.integration.playlist.base.PlaylistTestCase import PlaylistT
 
 class TestCase(PlaylistTestCase):
     def test_type_genre_and_name_tagless_then_no_result(self):
-        data_dict = {Filters.TYPE_LABEL_PUBLIC: PlaylistTypesLabel.GENRE, Filters.NAME: CriterialessPlaylistNames.TAG}
+        data_dict = {
+            Filters.TYPE_LABEL_PUBLIC: PlaylistTypesLabel.GENRE,
+            Filters.NAME_PUBLIC: CriterialessPlaylistNames.TAG,
+        }
         response = self._get_playlists(**data_dict)
 
         assert response.status_code == status.HTTP_200_OK
         assert len(self.results) == 0
 
     def test_type_genre_and_name_genreless_then_one_result(self):
-        data_dict = {Filters.TYPE_LABEL_PUBLIC: PlaylistTypesLabel.GENRE, Filters.NAME: CriterialessPlaylistNames.GENRE}
+        data_dict = {
+            Filters.TYPE_LABEL_PUBLIC: PlaylistTypesLabel.GENRE,
+            Filters.NAME_PUBLIC: CriterialessPlaylistNames.GENRE,
+        }
         response = self._get_playlists(**data_dict)
 
         assert response.status_code == status.HTTP_200_OK
@@ -35,7 +41,7 @@ class TestCase(PlaylistTestCase):
         genre2_name = "Punk rock"
         self.model_fixture_factory.create_genre(name=genre2_name)
 
-        data_dict = {Filters.TYPE_LABEL_PUBLIC: PlaylistTypesLabel.GENRE, Filters.NAME: "rock"}
+        data_dict = {Filters.TYPE_LABEL_PUBLIC: PlaylistTypesLabel.GENRE, Filters.NAME_PUBLIC: "rock"}
         response = self._get_playlists(**data_dict)
 
         assert response.status_code == status.HTTP_200_OK

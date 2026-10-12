@@ -1,5 +1,8 @@
-from hear.filtering.filter.char.NonEmptiableCharFilter import NonEmptiableCharFilter
-from hear.filtering.set.private_unique_resource.PrivateUniqueResourceFilterSet import PrivateUniqueResourceFilterSet
+from the_music_tree_api_kit.filtering.filter.char.NonEmptiableCharFilter import NonEmptiableCharFilter
+from the_music_tree_api_kit.filtering.set.private_unique_resource.PrivateUniqueResourceFilterSet import (
+    PrivateUniqueResourceFilterSet,
+)
+
 from hear.model.artist.Artist import Artist
 
 from .Fields import Fields

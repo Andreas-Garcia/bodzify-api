@@ -1,7 +1,7 @@
 from rest_framework import status
 from the_music_tree_api_kit.exception.validation.FieldValidationErrorCode import FieldValidationErrorCode
+from the_music_tree_genre_kit.criteria.Fields import Fields as FilterfFields
 
-from hear.filtering.set.criteria.Fields import Fields as FilterfFields
 from hear.model.criteria.Fields import Fields as ModelFields
 from hear.test.tests.integration.criteria.GenreTestCase import GenreTestCase
 from hear.test.utils.field.filter.foreign_key.PrivateForeignKeyFilterTestCase import PrivateForeignKeyFilterTestCase

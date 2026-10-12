@@ -1,9 +1,11 @@
 from datetime import timedelta
 
 from django.utils import timezone
+from the_music_tree_api_kit.filtering.set.private_unique_resource.Fields import Fields as PrivateUniqueResourceFields
+from the_music_tree_api_kit.filtering.set.private_unique_resource.PrivateUniqueResourceFilterSet import (
+    PrivateUniqueResourceFilterSet,
+)
 
-from hear.filtering.set.private_unique_resource.Fields import Fields as PrivateUniqueResourceFields
-from hear.filtering.set.private_unique_resource.PrivateUniqueResourceFilterSet import PrivateUniqueResourceFilterSet
 from hear.model.criteria.children.genre.Genre import Genre
 from hear.test.utils.AppTestCase import AppTestCase
 

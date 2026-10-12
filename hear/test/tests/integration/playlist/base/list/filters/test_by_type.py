@@ -2,8 +2,8 @@ from rest_framework import status
 from the_music_tree_api_kit.exception.validation.FieldValidationErrorCode import FieldValidationErrorCode
 from the_music_tree_api_kit.utils.data_transformer import to_camel_case, to_snake_case
 from the_music_tree_genre_kit.manual_playlist.ManualPlaylistTypeLabel import VALUE as MANUAL_PLAYLIST_TYPE_LABEL
+from the_music_tree_genre_kit.playlist.Fields import Fields as FilterSetFields
 
-from hear.filtering.set.playlist.Fields import Fields as FilterSetFields
 from hear.model.playlist.children.criteria.CriterialessPlaylistNames import CriterialessPlaylistNames
 from hear.serializer.model.playlist.base.output.detailed import Fields as PlaylistGetFields
 from hear.test.tests.integration.playlist.base.PlaylistTestCase import PlaylistTestCase
