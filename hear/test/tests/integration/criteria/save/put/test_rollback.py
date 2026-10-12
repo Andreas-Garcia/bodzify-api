@@ -12,7 +12,9 @@ class TestCase(GenreTestCase):
         genre_punk = self.model_fixture_factory.create_genre(name="Punk", parent=genre_rock)
         genre_metal = self.model_fixture_factory.create_genre(name="Metal")
 
-        with patch("hear.model.playlist.children.criteria.CriteriaPlaylist.CriteriaPlaylist.save") as mock:
+        with patch(
+            "the_music_tree_genre_kit.criteria.AbstractCriteriaManager.AbstractCriteriaManager._on_parent_changed"
+        ) as mock:
             exception_message = "Save failed!"
             mock.side_effect = Exception(exception_message)
 
