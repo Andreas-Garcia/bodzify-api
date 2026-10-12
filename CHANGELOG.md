@@ -41,7 +41,7 @@ All contributors (including maintainers) should update `CHANGELOG.md` when creat
 
 ### Changed
 
-- **Filtering**: shared filters and filtersets now come from `the-music-tree-api-kit` v0.10.0 (generic char/foreign-key filters, `PrivateUniqueResourceFilterSet`) and `the-music-tree-genre-kit` v0.43.0 (criteria and playlist filtersets); `hear/filtering` keeps only album, artist, play, search, spotify and uploaded-track. Query params unchanged.
+- **Filtering**: shared filters and filtersets now come from `the-music-tree-api-kit` v0.10.1 (generic char/foreign-key filters, `PrivateUniqueResourceFilterSet`) and `the-music-tree-genre-kit` v0.43.1 (criteria and playlist filtersets); `hear/filtering` keeps only album, artist, play, search, spotify and uploaded-track. Query params unchanged.
 
 ### Added
 
