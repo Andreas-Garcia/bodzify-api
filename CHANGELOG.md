@@ -33,6 +33,10 @@ All contributors (including maintainers) should update `CHANGELOG.md` when creat
 ```markdown
 ## [Unreleased]
 
+### Improved
+
+- Bumped `the-music-tree-genre-kit` to v0.43.2: playlist track counts use an index-only `Count("*")`.
+
 ### CI
 
 - Deploys: bumped `trigger-coolify-deploy` to v4.4.0 — a Coolify deployment stuck past an hour is cancelled (its build container force-stopped over SSH) instead of blocking every later deploy, and a failed or cancelled deploy posts an alert to the env's Discord status-alerts channel
