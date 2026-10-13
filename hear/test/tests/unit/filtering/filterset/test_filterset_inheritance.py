@@ -2,16 +2,20 @@ from datetime import timedelta
 
 from django.utils import timezone
 from django_filters import FilterSet
+from the_music_tree_api_kit.filtering.set.private_unique_resource.Fields import Fields as PrivateUniqueResourceFields
+from the_music_tree_genre_kit.filtering.set.criteria.CriteriaFilterSet import CriteriaFilterSet
+from the_music_tree_genre_kit.filtering.set.criteria_playlist.CriteriaPlaylistFilterSet import CriteriaPlaylistFilterSet
+from the_music_tree_genre_kit.filtering.set.manual_playlist.ManualPlaylistFilterSet import ManualPlaylistFilterSet
+from the_music_tree_genre_kit.filtering.set.playlist.PlaylistFilterSet import PlaylistFilterSet
+from the_music_tree_genre_kit.playlist.Playlist import Playlist
 
 from hear.filtering.set.album.AlbumFilterSet import AlbumFilterSet
 from hear.filtering.set.artist.ArtistFilterSet import ArtistFilterSet
-from hear.filtering.set.criteria.CriteriaFilterSet import CriteriaFilterSet
 from hear.filtering.set.play.PlayFilterSet import PlayFilterSet
-from hear.filtering.set.playlist.children.criteria.CriteriaPlaylistFilterSet import CriteriaPlaylistFilterSet
-from hear.filtering.set.playlist.children.manual.ManualPlaylistFilterSet import ManualPlaylistFilterSet
-from hear.filtering.set.playlist.PlaylistFilterSet import PlaylistFilterSet
-from hear.filtering.set.private_unique_resource.Fields import Fields as PrivateUniqueResourceFields
 from hear.filtering.set.uploaded_track.UploadedTrackFilterSet import UploadedTrackFilterSet
+from hear.model.criteria.Criteria import Criteria
+from hear.model.playlist.children.criteria.CriteriaPlaylist import CriteriaPlaylist
+from hear.model.playlist.children.manual.ManualPlaylist import ManualPlaylist
 from hear.test.utils.AppTestCase import AppTestCase
 
 
@@ -31,8 +35,9 @@ class TestFilterInheritance(AppTestCase):
             PrivateUniqueResourceFields.UPDATED_ON_LTE,
         }
 
-    def assert_datetime_inherited_filters(self, filterset_class):
-        filterset: FilterSet = filterset_class(queryset=filterset_class.Meta.model.objects.all())
+    def assert_datetime_inherited_filters(self, filterset_class, model=None):
+        model = model or filterset_class.Meta.model
+        filterset: FilterSet = filterset_class(queryset=model.objects.all())
         available_filters = set(filterset.filters.keys())
         inherited_filters = self.expected_filters & available_filters
         assert inherited_filters == self.expected_filters, (
@@ -67,16 +72,16 @@ class TestFilterInheritance(AppTestCase):
         self.assert_datetime_inherited_filters(UploadedTrackFilterSet)
 
     def test_criteria_filter_inheritance(self):
-        self.assert_datetime_inherited_filters(CriteriaFilterSet)
+        self.assert_datetime_inherited_filters(CriteriaFilterSet, Criteria)
 
     def test_base_playlist_filter_inheritance(self):
-        self.assert_datetime_inherited_filters(PlaylistFilterSet)
+        self.assert_datetime_inherited_filters(PlaylistFilterSet, Playlist)
 
     def test_manual_playlist_filter_inheritance(self):
-        self.assert_datetime_inherited_filters(ManualPlaylistFilterSet)
+        self.assert_datetime_inherited_filters(ManualPlaylistFilterSet, ManualPlaylist)
 
     def test_criteria_playlist_filter_inheritance(self):
-        self.assert_datetime_inherited_filters(CriteriaPlaylistFilterSet)
+        self.assert_datetime_inherited_filters(CriteriaPlaylistFilterSet, CriteriaPlaylist)
 
     def test_play_filter_inheritance(self):
         self.assert_datetime_inherited_filters(PlayFilterSet)
@@ -98,21 +103,21 @@ class TestFilterInheritance(AppTestCase):
 
         filterset = CriteriaFilterSet(
             {PrivateUniqueResourceFields.CREATED_ON: now.isoformat()},
-            queryset=CriteriaFilterSet.Meta.model.objects.all(),
+            queryset=Criteria.objects.all(),
         )
 
         assert [record.pk for record in filterset.qs] == [present_record.pk]
 
         filterset = CriteriaFilterSet(
             {PrivateUniqueResourceFields.CREATED_ON_GT: now.isoformat()},
-            queryset=CriteriaFilterSet.Meta.model.objects.all(),
+            queryset=Criteria.objects.all(),
         )
 
         assert [record.pk for record in filterset.qs] == [future_record.pk]
 
         filterset = CriteriaFilterSet(
             {PrivateUniqueResourceFields.CREATED_ON_LT: now.isoformat()},
-            queryset=CriteriaFilterSet.Meta.model.objects.all(),
+            queryset=Criteria.objects.all(),
         )
 
         assert [record.pk for record in filterset.qs] == [past_record.pk]
@@ -122,7 +127,7 @@ class TestFilterInheritance(AppTestCase):
                 PrivateUniqueResourceFields.CREATED_ON_GTE: past.isoformat(),
                 PrivateUniqueResourceFields.CREATED_ON_LTE: now.isoformat(),
             },
-            queryset=CriteriaFilterSet.Meta.model.objects.all(),
+            queryset=Criteria.objects.all(),
         )
 
         assert {record.pk for record in filterset.qs} == {past_record.pk, present_record.pk}

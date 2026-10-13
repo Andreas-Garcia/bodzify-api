@@ -1,7 +1,7 @@
 from rest_framework import status
 from the_music_tree_genre_kit.criteria.CriteriaTreeName import CriteriaTreeName
+from the_music_tree_genre_kit.criteria.Fields import Fields as FilterFields
 
-from hear.filtering.set.playlist.children.criteria.Fields import Fields as FilterFields
 from hear.model.playlist.children.criteria.genre.GenrePlaylist import GenrePlaylist
 from hear.serializer.model.playlist.children.criteria.output.detailed import Fields as RietrieveFields
 from hear.test.tests.integration.playlist.children.criteria.genre.GenrePlaylistTestCase import GenrePlaylistTestCase

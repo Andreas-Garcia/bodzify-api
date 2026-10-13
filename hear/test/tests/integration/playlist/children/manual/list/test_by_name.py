@@ -1,7 +1,7 @@
 from rest_framework import status
 from the_music_tree_api_kit.exception.validation.FieldValidationErrorCode import FieldValidationErrorCode
+from the_music_tree_genre_kit.playlist.Fields import Fields as FilterFields
 
-from hear.filtering.set.playlist.Fields import Fields as FilterFields
 from hear.serializer.model.playlist.children.manual.output.Fields import Fields
 from hear.test.tests.integration.playlist.children.manual.ManualPlaylistTestCase import ManualPlaylistTestCase
 from hear.test.utils.field.filter.char.NotNullableFreeCharFilterTestCase import NotNullableFreeCharFilterTestCase
@@ -15,7 +15,7 @@ class TestCase(ManualPlaylistTestCase, NotNullableFreeCharFilterTestCase):
         response = self._get_manual_playlists(name="")
 
         assert response.status_code == status.HTTP_400_BAD_REQUEST
-        assert self.bad_request_result_field_errors[0]["field"] == FilterFields.NAME
+        assert self.bad_request_result_field_errors[0]["field"] == FilterFields.NAME_PUBLIC
         assert self.bad_request_result_field_errors[0]["code"] == FieldValidationErrorCode.BLANK
 
     def test_contains_in_another_case_then_results(self):

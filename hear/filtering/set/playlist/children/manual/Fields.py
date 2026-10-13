@@ -1,5 +1,0 @@
-from hear.model.playlist.children.manual.Fields import Fields as ModelFields
-
-
-class Fields:
-    NAME_PUBLIC = ModelFields.NAME_PUBLIC

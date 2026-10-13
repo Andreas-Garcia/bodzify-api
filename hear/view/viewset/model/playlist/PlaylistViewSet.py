@@ -4,11 +4,11 @@ from drf_spectacular.utils import (
     extend_schema,
 )
 from the_music_tree_api_kit.view.viewset.model.AppModelViewSet import AppModelViewSet
+from the_music_tree_genre_kit.filtering.set.playlist.PlaylistFilterSet import PlaylistFilterSet
+from the_music_tree_genre_kit.playlist.Fields import Fields as QueryParamsFields
 from the_music_tree_genre_kit.playlist.Playlist import Playlist
 from the_music_tree_genre_kit.view.viewset.playlist.PlaylistTracksActionMixin import PlaylistTracksActionMixin
 
-from hear.filtering.set.playlist.Fields import Fields as QueryParamsFields
-from hear.filtering.set.playlist.PlaylistFilterSet import PlaylistFilterSet
 from hear.serializer.model.playlist.base.output.detailed import PlaylistDetailedSerializer
 from hear.serializer.model.playlist.base.output.simple import PlaylistSimpleSerializer
 from hear.serializer.model.track_playlist_rel.output.in_page import TrackPlaylistRelInPageSerializer
@@ -32,7 +32,9 @@ class PlaylistViewSet(PlaylistTracksActionMixin, AppModelViewSet[Playlist]):
 
     @extend_schema(
         parameters=[
-            OpenApiParameter(name=QueryParamsFields.NAME, type=OpenApiTypes.STR, location=OpenApiParameter.QUERY),
+            OpenApiParameter(
+                name=QueryParamsFields.NAME_PUBLIC, type=OpenApiTypes.STR, location=OpenApiParameter.QUERY
+            ),
             OpenApiParameter(
                 name=QueryParamsFields.TYPE_LABEL_INTERNAL, type=OpenApiTypes.STR, location=OpenApiParameter.QUERY
             ),

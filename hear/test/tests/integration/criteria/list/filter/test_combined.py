@@ -2,9 +2,9 @@ from datetime import timedelta
 
 from django.utils import timezone
 from rest_framework import status
+from the_music_tree_api_kit.filtering.set.private_unique_resource.Fields import Fields as PrivateUniqueResourceFields
 from the_music_tree_api_kit.utils.data_transformer import to_camel_case
 
-from hear.filtering.set.private_unique_resource.Fields import Fields as PrivateUniqueResourceFields
 from hear.serializer.model.criteria.output.CriteriaOutputFieldKey import CriteriaOutputFieldKey
 from hear.test.tests.integration.criteria.GenreTestCase import GenreTestCase
 
