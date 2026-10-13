@@ -751,7 +751,7 @@ requires-dist = [
     { name = "simplejson", specifier = "==3.16.0" },
     { name = "spotipy", specifier = "==2.23.0" },
     { name = "the-music-tree-api-kit", git = "https://github.com/BehindTheMusicTree/the-music-tree-api-kit.git?rev=v0.10.1" },
-    { name = "the-music-tree-genre-kit", git = "https://github.com/BehindTheMusicTree/the-music-tree-genre-kit.git?rev=v0.43.1" },
+    { name = "the-music-tree-genre-kit", git = "https://github.com/BehindTheMusicTree/the-music-tree-genre-kit.git?rev=v0.43.2" },
     { name = "tinytag", specifier = "==1.10.1" },
     { name = "uvicorn", specifier = "==0.20.0" },
     { name = "werkzeug", specifier = "==2.2.2" },
@@ -1628,8 +1628,8 @@ dependencies = [
 
 [[package]]
 name = "the-music-tree-genre-kit"
-version = "0.43.1"
-source = { git = "https://github.com/BehindTheMusicTree/the-music-tree-genre-kit.git?rev=v0.43.1#dffb65e889e810190498cf97b9cf9fdffcda2382" }
+version = "0.43.2"
+source = { git = "https://github.com/BehindTheMusicTree/the-music-tree-genre-kit.git?rev=v0.43.2#668f7379c639c981c35876913cd06ebaecc9ee63" }
 dependencies = [
     { name = "django" },
     { name = "djangorestframework" },

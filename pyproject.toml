@@ -55,7 +55,7 @@ dependencies = [
     "simplejson==3.16.0",
     "spotipy==2.23.0",
     "the-music-tree-api-kit @ git+https://github.com/BehindTheMusicTree/the-music-tree-api-kit.git@v0.10.1",
-    "the-music-tree-genre-kit @ git+https://github.com/BehindTheMusicTree/the-music-tree-genre-kit.git@v0.43.1",
+    "the-music-tree-genre-kit @ git+https://github.com/BehindTheMusicTree/the-music-tree-genre-kit.git@v0.43.2",
     "tinytag==1.10.1",
     "uvicorn==0.20.0",
     "werkzeug==2.2.2",
