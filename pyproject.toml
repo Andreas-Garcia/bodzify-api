@@ -58,7 +58,7 @@ dependencies = [
     "the-music-tree-genre-kit @ git+https://github.com/BehindTheMusicTree/the-music-tree-genre-kit.git@v0.43.2",
     "tinytag==1.10.1",
     "uvicorn==0.20.0",
-    "werkzeug==2.2.2",
+    "werkzeug==3.1.9",
 ]
 
 [project.optional-dependencies]
