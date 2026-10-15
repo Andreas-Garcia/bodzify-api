@@ -35,6 +35,10 @@ All contributors (including maintainers) should update `CHANGELOG.md` when creat
 
 ### Security
 
+- Bumped `Django` to 5.2.18 and `djangorestframework` to 3.18.3, enabled by the kits relaxing their exact pins; repinned `the-music-tree-api-kit` v0.10.3 and `the-music-tree-genre-kit` v0.46.2.
+
+### Security
+
 - Bumped `PyJWT` 2.15.0, `djangorestframework-simplejwt` 5.5.1, `Markdown` 3.8.1, `werkzeug` 3.1.9, `certifi`, `gunicorn` 23.0.0, `httplib2` 0.32.0, `oauthlib` 4.0.0, `pyOpenSSL` 26.4.0, `requests` 2.33.0, `setuptools` 83.0.0, `spotipy` 2.25.2, `tinytag` 2.2.1, `python-dotenv` 1.2.2, `pytest` 9.0.3 and the locked `cryptography`, `urllib3`, `sqlparse`, `virtualenv`, `picomatch` to clear Dependabot alerts. `Django` and `djangorestframework` stay pinned by `the-music-tree-api-kit` (exact pins).
 - Added `.github/dependabot.yml` targeting `develop`.
 
