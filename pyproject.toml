@@ -32,7 +32,7 @@ dependencies = [
     "djangorestframework-simplejwt==5.5.1",
     "djangorestframework==3.18.3",
     "distro==1.4.0",
-    "docker==7.1.0",
+    "docker==7.2.0",
     "drf-spectacular==0.29.0",
     "fake-samples-loader==1.0.13",
     "gunicorn==23.0.0",
