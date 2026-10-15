@@ -53,7 +53,7 @@ dependencies = [
     "setuptools==83.0.0",
     "shortuuid==1.0.9",
     "simplejson==3.16.0",
-    "spotipy==2.25.2",
+    "spotipy==2.26.0",
     "the-music-tree-api-kit @ git+https://github.com/BehindTheMusicTree/the-music-tree-api-kit.git@v0.10.3",
     "the-music-tree-genre-kit @ git+https://github.com/BehindTheMusicTree/the-music-tree-genre-kit.git@v0.46.2",
     "tinytag==2.2.1",
