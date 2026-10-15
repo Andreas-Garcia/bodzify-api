@@ -12,7 +12,7 @@ description = "Django REST API for Hear The Music Tree"
 requires-python = ">=3.14"
 dependencies = [
     "asgiref==3.8.1",
-    "audiometa-python==1.1.0",
+    "audiometa-python==1.4.4",
     "bcrypt==3.1.7",
     "blinker==1.4",
     "certifi==2026.7.22",

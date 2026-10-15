@@ -43,14 +43,14 @@ wheels = [
 
 [[package]]
 name = "audiometa-python"
-version = "1.1.0"
+version = "1.4.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "mutagen" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/97/d1/dc9e411fccd34fbd863500c2d99b445dce41118504d930f30a76a96b9f1f/audiometa_python-1.1.0.tar.gz", hash = "sha256:a23008f73f5dd298cf94ed2ed867026dbafa7c683fc03e8f953bf2bcf28db58e", size = 280914, upload-time = "2026-03-02T14:10:37.446Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/eb/84/62176568e752028bc5df5e96a6a0e12e09eb73a688501a5d5adb941b1e79/audiometa_python-1.4.4.tar.gz", hash = "sha256:7881c9aead9613af6efaf5e5becf2eb771ae4250d0fe3838eef863f21f509c1b", size = 293988, upload-time = "2026-09-11T14:37:33.552Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/3f/91/3d86e3a2fe5baf5734b18af7f093257a771ff815ad61dfc95e23ab0457cb/audiometa_python-1.1.0-py3-none-any.whl", hash = "sha256:5c548477b8e9d2da685ee616d25284d05026536cb2e9c7d196fa37c8fec65ea6", size = 431582, upload-time = "2026-03-02T14:10:35.82Z" },
+    { url = "https://files.pythonhosted.org/packages/f5/09/bd2cec47b34e33ee49fa22799bf09fc11d481acdacc2d8d848f85dfe2ef1/audiometa_python-1.4.4-py3-none-any.whl", hash = "sha256:976bf1e3065df4c516fced164b6fdad4838e0492a178b9b4efd639669a9b4131", size = 445439, upload-time = "2026-09-11T14:37:32.249Z" },
 ]
 
 [[package]]
@@ -734,7 +734,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "asgiref", specifier = "==3.8.1" },
-    { name = "audiometa-python", specifier = "==1.1.0" },
+    { name = "audiometa-python", specifier = "==1.4.4" },
     { name = "bcrypt", specifier = "==3.1.7" },
     { name = "blinker", specifier = "==1.4" },
     { name = "bump-my-version", marker = "extra == 'dev'", specifier = "==1.3.0" },
